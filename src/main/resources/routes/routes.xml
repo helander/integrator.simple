@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+ 
+  <route id="foo">
+    <from uri="direct:foo"/>
+    <to uri="mock:foo"/>
+  </route>
+ 
+  
+	<route id="servlet-example">
+		<from uri="servlet:///hello"/>
+			<to uri="log:input"/>
+			<setHeader headerName="jcms_ios_service"><constant>com.jeppesen.jcms.service.xxx.XXXInterface</constant></setHeader>
+			<setHeader headerName="jcms_ios_script"><constant>XXXInterface</constant></setHeader>
+			<!-- We need to set the action based on incoming soapAction (if it exists) -->
+			<setHeader headerName="SOAPAction"><constant>urn:methodYYY</constant></setHeader>
+			
+			<to uri="xslt:xsl/XXX-request.xsl"/>
+			
+
+			<!--to uri="cmsbroker:queue:ioserver.foo"/-->
+
+
+
+			
+			<setHeader headerName="jcms_state"><constant>0056788</constant></setHeader> <!-- This is just a simulation. In real case the JMS response will have this header.-->
+    		<removeHeaders pattern="jcms_client" />
+    		<removeHeaders pattern="jcms_role" />
+    		<removeHeaders pattern="jcms_attributes" />
+    		<removeHeaders pattern="jcms_ios*" />
+    		<removeHeaders pattern="SOAPAction" />
+
+			<!--to uri="xslt:xsl/XXX-response.xsl"/-->
+			
+    </route>
+  
+ 
+</routes>

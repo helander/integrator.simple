@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.jeppesen.jcms</groupId>
+		<artifactId>wpf.buildenv</artifactId>
+		<version>1.3.2-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.jeppesen.jcms</groupId>
+	<artifactId>integrator.simple</artifactId>
+	<description>Integrator site application. 
+	This is a template for building an integrator site.
+	It provides arbitrary Camel routes for integration.
+	RouteBuilders and Camel route XML files are to be added in the src tree of the project and corresponding
+	configuration added in the web.xml.
+	</description>
+	<packaging>war</packaging>
+
+	<name>${project.groupId} :: ${project.artifactId}</name>
+
+
+	<dependencies>
+		
+		<!-- The following dependencies are mandatory -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servletlistener</artifactId>
+			<version>${camel.version}</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet</artifactId>
+			<version>${camel.version}</version>
+		</dependency>		
+
+		<dependency>
+			<groupId>com.jeppesen.jcms</groupId>
+			<artifactId>wpf.security</artifactId>
+		</dependency>		
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+

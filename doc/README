@@ -1,0 +1,160 @@
+================
+ Document Title
+================
+----------
+ Subtitle
+----------
+
+Section Title
+=============
+
+
+
+
+
+
+integrator.simple
+=================
+A template for an integrator (WAR deployment) that contains a set of basic Camel routes.
+
+
+Build instructions
+------------------
+
+Deploy instructions
+-------------------
+
+
+Runtime instructions
+--------------------
+
+
+This is a paragraph.  It's quite
+short.
+
+   This paragraph will result in an indented block of
+   text, typically used for quoting other text.
+
+This is another one.
+
+
+
+1. numbers
+
+A. upper-case letters
+   and it goes over many lines
+
+   with two paragraphs and all!
+
+a. lower-case letters
+
+   3. with a sub-list starting at a different number
+   4. make sure the numbers are in the correct sequence though!
+
+I. upper-case roman numerals
+
+i. lower-case roman numerals
+
+(1) numbers again
+
+1) and again
+
+
+
+* a bullet point using "*"
+
+  - a sub-list using "-"
+
+    + yet another sub-list
+
+  - another item
+  
+  
+  
+what
+  Definition lists associate a term with a definition.
+
+*how*
+  The term is a one-line phrase, and the definition is one or more
+  paragraphs or body elements, indented relative to the term.
+  Blank lines are not allowed between term and definition.
+  
+  
+
+An example::
+
+    Whitespace, newlines, blank lines, and all kinds of markup
+      (like *this* or \this) is preserved by literal blocks.
+  Lookie here, I've dropped an indentation level
+  (but not far enough)
+
+no more example
+
+
+
+
+klklklöklk
+
+
+
+Chapter 2 Title
+===============
+
+
+
+
+.. image:: images/WPF_Site.png
+
+
+
+
+.. image:: images/WPF_Site.png
+   :height: 100
+   :width: 200
+   :scale: 50
+   :alt: alternate text
+
+   
+   
+   
+Grid table:
+
++------------+------------+-----------+ 
+| Header 1   | Header 2   | Header 3  | 
++============+============+===========+ 
+| body row 1 | column 2   | column 3  | 
++------------+------------+-----------+ 
+| body row 2 | Cells may span columns.| 
++------------+------------+-----------+ 
+| body row 3 | Cells may  | - Cells   | 
++------------+ span rows. | - contain | 
+| body row 4 |            | - blocks. | 
++------------+------------+-----------+
+
+
+
+Simple table:
+
+=====  =====  ====== 
+   Inputs     Output 
+------------  ------ 
+  A      B    A or B 
+=====  =====  ====== 
+False  False  False 
+True   False  True 
+False  True   True 
+True   True   True 
+=====  =====  ======
+
+External hyperlinks, like Python_.
+
+.. _Python: http://www.python.org/
+
+
+Internal crossreferences, like example_.
+
+.. _example:
+
+This is an example crossreference target.
+
+

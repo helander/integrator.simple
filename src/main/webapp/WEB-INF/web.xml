@@ -1,0 +1,81 @@
+
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<distributable />
+	
+	<!-- Camel servlet-listener: this will bootstrap configured routes -->
+		<listener>
+			<listener-class>org.apache.camel.component.servletlistener.SimpleCamelServletContextListener</listener-class>
+		</listener>
+		<!-- Camel context name -->
+		<context-param>
+			<param-name>name</param-name>
+			<param-value>Integrator</param-value>
+		</context-param>
+		<!-- Add Java route builders -->
+		<context-param>
+			<param-name>routeBuilder-classes</param-name>
+			<param-value>
+				com.jeppesen.jcms.integrator.routes.FooRouteBuilder,
+				com.jeppesen.jcms.integrator.routes.BarRouteBuilder
+			</param-value>
+		</context-param>
+		<!-- Build routes from XML files. -->
+		<!-- classpath:routes is equivalent to files stored under src/main/resources/routes -->
+		<context-param>
+			<param-name>routeBuilder-xml</param-name>
+			<param-value>
+				classpath:routes/routes.xml,
+				classpath:routes/more-routes.xml
+			</param-value>
+		</context-param> 
+
+	<!--Camel servlet: this is used when camel a camel route is starting with an incoming http request -->
+		<servlet>
+			<servlet-name>CamelServlet</servlet-name>
+			<servlet-class>org.apache.camel.component.servlet.CamelHttpTransportServlet</servlet-class>
+			<load-on-startup>1</load-on-startup>
+		</servlet>
+ 
+		<servlet-mapping>
+			<servlet-name>CamelServlet</servlet-name>
+			<url-pattern>/integrator/*</url-pattern>
+		</servlet-mapping>
+		
+	<security-constraint>
+       <web-resource-collection>
+          <web-resource-name>integrator-access</web-resource-name>
+          <url-pattern>/integrator/*</url-pattern>
+       </web-resource-collection>
+        <auth-constraint>
+            <role-name>*</role-name>
+        </auth-constraint>
+    </security-constraint>
+	
+	<login-config>
+			<auth-method>BASIC</auth-method>
+			<realm-name>IntegratorRealm</realm-name>
+	</login-config>
+	<security-role>
+			<role-name>*</role-name>
+	</security-role>
+		
+	
+	
+    <!-- cmsbroker configuration -->		
+	
+	<env-entry>
+		<env-entry-name>jcms/cmsbroker/url</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<lookup-name>java:global/jcms/cmsbroker/url</lookup-name>
+	</env-entry>
+
+	<env-entry>
+		<env-entry-name>jcms/cmsbroker/destinationprefix</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<lookup-name>java:global/jcms/cmsbroker/destinationprefix</lookup-name>
+	</env-entry>
+
+
+</web-app>
