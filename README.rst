@@ -1,4 +1,3 @@
-
 =========================================
 ReStructuredText (rst): plain text markup
 =========================================
@@ -69,7 +68,7 @@ Show me some more stuff, please
 
 We can also include figures:
 
-.. figure:: image.png
+.. figure:: images/WPF_Site.png
    :width: 300pt
 
 
